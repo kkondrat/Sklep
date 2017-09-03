@@ -6,8 +6,8 @@
 package produkt;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -19,7 +19,7 @@ public class Koszyk {
     
     
      
-        public static Map<String, Double> getIlosci(InputStream is){
+        public Koszyk(InputStream is){ //Map<String, Double> getIlosci(InputStream is)
             
             Scanner scanner = new Scanner(is);
        
@@ -33,7 +33,7 @@ public class Koszyk {
             double jablkaIlosc = scanner.nextDouble();
             System.out.println("Podaj ilość gruszek: ");
             double gruszkiIlosc = scanner.nextDouble();
-            
+            /*
             Map<String, Double> ilosci = new HashMap<>();
             
             ilosci.put("Ilosc Mleka", mlekoIlosc);
@@ -43,5 +43,5 @@ public class Koszyk {
             ilosci.put("Ilosc Gruszek", gruszkiIlosc);
             
             return ilosci;
-        }
+        }*/
 }

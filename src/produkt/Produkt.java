@@ -5,8 +5,13 @@
  */
 package produkt;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import static produkt.Koszyk.getIlosci;
+import java.util.Scanner;
+//import static produkt.Koszyk.getIlosci;
+
 
 /**
  *
@@ -14,10 +19,15 @@ import static produkt.Koszyk.getIlosci;
  */
 public class Produkt {
 
-    private String nazwa;
+       
+    private static String nazwa;
+    private static double cena;
+    private static double ilosc;
     
-    public Produkt (String nazwa){
+    public Produkt (String nazwa, double cena, double ilosc){
         this.nazwa = nazwa;
+        this.cena = cena;
+        this.ilosc = ilosc;
     }
     
     public String getNazwa(){
@@ -25,117 +35,110 @@ public class Produkt {
     }
     
     public double getCena(){
-        return 0;
+        return cena;
     }
     
     public double getDostepnaIlosc(){
-        return 10;
+        return ilosc;
     }
     
+    public double getIloscDoKoszyka(){
+        System.out.println("-Podaj ilość produktow do koszyka");
+        return kupione(System.in);
+    }
+    
+     
+    /*
     public static class Mleko extends Produkt{
-        public  Mleko (String nazwa){
-            super(nazwa);
+        public  Mleko ( String nazwa, double cena, double ilosc){
+            super(nazwa, cena, ilosc);
+            
         }
     
-        @Override
-        public double getCena(){
-            return 1.68;
-        }
-        
-        @Override
-        public double getDostepnaIlosc(){
-            return 8;
-        }
     }    
     
     public static class Kawa extends Produkt{
-        public Kawa (String nazwa){
-            super(nazwa);
+        public Kawa (String nazwa, double cena, double ilosc){
+            super(nazwa, cena, ilosc);
+            super.getCena();
+            super.getNazwa();
+            super.getDostepnaIlosc();
         }
     
-        @Override
-        public double getCena(){
-            return 14.55;
-        }
-    
-        @Override
-        public double getDostepnaIlosc(){
-            return 6;
-        }
     }
     
     public static class Herbata extends Produkt{
-        public Herbata (String nazwa){
-            super(nazwa);
+        public Herbata (String nazwa, double cena, double ilosc){
+            super(nazwa, cena, ilosc);
+            super.getCena();
+            super.getNazwa();
+            super.getDostepnaIlosc();
         }
     
-        @Override
-        public double getCena(){
-            return 4.55;
-        }
-    
-        @Override
-        public double getDostepnaIlosc(){
-            return 12;
-        }
     }
     
     public static class Jablka extends Produkt{
-        public Jablka (String nazwa){
-            super(nazwa);
+        public Jablka (String nazwa, double cena, double ilosc){
+            super(nazwa, cena, ilosc);
+            super.getCena();
+            super.getNazwa();
+            super.getDostepnaIlosc();
         }
     
-        @Override
-        public double getCena(){
-            return 3.99;
-        }
-    
-        @Override
-        public double getDostepnaIlosc(){
-            return 1;
-        }
     }
     
     public static class Gruszki extends Produkt{
-        public Gruszki (String nazwa){
-            super(nazwa);
+        public Gruszki (String nazwa, double cena, double ilosc){
+            super(nazwa, cena, ilosc);
+            super.getCena();
+            super.getNazwa();
+            super.getDostepnaIlosc();
         }
     
-        @Override
-        public double getCena(){
-            return 4.99;
-        }
-    
-        @Override
-        public double getDostepnaIlosc(){
-            return 2;
-        }
     }
- 
-    static Object p = null;
+ */
+    //static Object p = null;
+    
+    
+    
+    
+    
+    public static List<Produkt> getProdukt(){
+        List<Produkt> products = new ArrayList<>();
+        
+        products.add(new Produkt("Mleko", 1.50, 20));
+        
+        products.add(new Produkt("Kawa", 16.7, 10));
+        
+        products.add(new Produkt("Herbata", 5.50, 2));
+        
+        products.add(new Produkt("Jablka", 2.2, 10.5));
+        
+        products.add(new Produkt("Gruszki", 3.50, 4));
+            
+        return products;
+    }
+    
+     static List<Produkt> IloscProduktow = getProdukt();
     
     public static void main(String[] args) {
-        obiekty();
+       
+        double price = 0;
+        
+        System.out.println(IloscProduktow.get(1).getNazwa());
+        System.out.println(IloscProduktow.get(2).getNazwa());
+        System.out.println(IloscProduktow.get(3).getNazwa());
+        
+        for (Produkt prod : IloscProduktow){
+            System.out.print(prod.getNazwa());
+            price += prod.getCena() * prod.getIloscDoKoszyka();
+        }
+        
+        //System.out.println(price);
+        //Map<String, Double> ilosciProduktow = getIlosci(System.in);
     }
     
     
-    public static void obiekty(){
-        Produkt p = new Mleko("Mleko");
-        System.out.println("Cena " +p.getNazwa() + " wynosi: " + p.getCena() + " dostepna ilosc: " + p.getDostepnaIlosc());
-        
-        Produkt p1 = new Kawa("Kawa");
-        System.out.println("Cena " +p1.getNazwa() + " wynosi: " + p1.getCena() + " dostepna ilosc: " + p1.getDostepnaIlosc());
-
-        Produkt p2 = new Herbata("Herbata");
-        System.out.println("Cena " +p2.getNazwa() + " wynosi: " + p2.getCena() + " dostepna ilosc: " + p2.getDostepnaIlosc());
-
-        Produkt p3 = new Jablka("Jablka");
-        System.out.println("Cena " +p3.getNazwa() + " wynosi: " + p3.getCena() + " dostepna ilosc: " + p3.getDostepnaIlosc());
-
-        Produkt p4 = new Gruszki("Gruszki");
-        System.out.println("Cena " +p4.getNazwa() + " wynosi: " + p4.getCena() + " dostepna ilosc: " + p4.getDostepnaIlosc());
-        
-    }
 //    
 //    long KwotaDoZaplaty = 0;
 //    
@@ -148,6 +151,15 @@ public class Produkt {
 //          }
 //            return "Do zapłaty: " + KwotaDoZaplaty;
 //    }
+
+    private double kupione(InputStream is) {
+        Scanner n = new Scanner(is);
+        double kupionaIlosc = n.nextDouble();
+        return kupionaIlosc;
+    }
     
     
-}
+
+    
+    
+ }

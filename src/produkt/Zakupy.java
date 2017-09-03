@@ -5,18 +5,13 @@
  */
 package produkt;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import static produkt.Koszyk.getIlosci;
-import produkt.Produkt.Gruszki;
-import produkt.Produkt.Herbata;
-import produkt.Produkt.Jablka;
-import produkt.Produkt.Kawa;
-import produkt.Produkt.Mleko;
-import static produkt.Produkt.obiekty;
-import static produkt.Produkt.p;
 
 
 
@@ -25,16 +20,33 @@ import static produkt.Produkt.p;
  * @author Karola
  */
 public class Zakupy {
-    static List<Produkt> products = new ArrayList<Produkt>();
-    static{
-        products.add(new Mleko("Mleko"));
-        products.add(new Kawa("Kawa"));
-        products.add(new Herbata("Herbata"));
-        products.add(new Jablka("Jablka"));
-        products.add(new Gruszki("Gruszki"));
-    }
+  /*
+    public static List<Produkt> getList(InputStream is){
     
+    List<Produkt> products = new ArrayList<>();
     
+        Scanner scanner = new Scanner(is);
+        System.out.println("Podaj ilosc asortymentu");
+        int x = scanner.nextInt();
+        
+        for( int i = 0; i < x; i++){
+            
+            System.out.println("Podaj nazwe produktu");
+            String n = scanner.next();
+            
+            System.out.println("Podaj cene produktu");
+            double c = scanner.nextDouble();
+            
+            System.out.println("Podaj dostepna ilosc produktow");
+            double il = scanner.nextDouble();
+    
+            products.add(new Produkt(n, c, il));
+        
+        }
+    return products;    
+}*/
+    
+   
     public static Map<Double, Double> getZakupy(){
         
         Map<String, Double> ilosc = getIlosci(System.in);
@@ -46,7 +58,7 @@ public class Zakupy {
         double gruszki = ilosc.get("Ilosc Gruszek");
         
         Map<Double, Double> zakupy = new HashMap<>();
-        
+       
         zakupy.put(mleko, p.getCena());
         zakupy.put(kawa, p1.getCena());
         zakupy.put(herbata, p2.getCena());
@@ -55,6 +67,7 @@ public class Zakupy {
         
         return zakupy;
     }
+
 }
 
         
